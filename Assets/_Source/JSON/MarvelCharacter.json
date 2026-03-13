@@ -1,0 +1,27 @@
+{
+  "locations": [
+    { "Name": "Iron Man" },
+    { "Name": "Captain America" },
+    { "Name": "Hulk" },
+    { "Name": "Thor" },
+    { "Name": "Hawkeye" },
+    { "Name": "Black Widow" },
+    { "Name": "Scarlet Witch" },
+    { "Name": "Winter Soldier" },
+    { "Name": "Nick Fury" },
+    { "Name": "War Machine" },
+    { "Name": "Loki" },
+    { "Name": "Black Panther" },
+    { "Name": "Doctor Strange" },
+    { "Name": "Spider-Man" },
+    { "Name": "Ant-Man" },
+    { "Name": "Star-Lord" },
+    { "Name": "Gamora" },
+    { "Name": "Thanos" },
+    { "Name": "Rocket" },
+    { "Name": "Groot" },
+    { "Name": "Falcon" },
+    { "Name": "Capitan Marvel" },
+    { "Name": "Hela" }
+  ]
+}

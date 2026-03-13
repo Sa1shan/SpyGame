@@ -1,0 +1,23 @@
+{
+  "locations": [
+    { "Name": "German" },
+    { "Name": "Australia" },
+    { "Name": "Italy" },
+    { "Name": "Russia" },
+    { "Name": "USA" },
+    { "Name": "Spain" },
+    { "Name": "China" },
+    { "Name": "Japan" },
+    { "Name": "South Korea" },
+    { "Name": "Egypt" },
+    { "Name": "Finland" },
+    { "Name": "Greece" },
+    { "Name": "Portugal" },
+    { "Name": "Brazil" },
+    { "Name": "Canada" },
+    { "Name": "United Kingdom" },
+    { "Name": "India" },
+    { "Name": "United Arabian Emirates" },
+    { "Name": "Armenia" }
+  ]
+}
