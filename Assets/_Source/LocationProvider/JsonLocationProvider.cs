@@ -6,8 +6,7 @@ namespace _Source.LocationProvider
     public class JsonLocationProvider : ILocationProvider
     {
         private LocationDatabase _database;
-
-        // Конструктор теперь может быть пустым или принимать стартовый файл
+        
         public JsonLocationProvider() { }
 
         public string CurrentLocation { get; set; }

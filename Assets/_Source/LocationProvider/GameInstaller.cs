@@ -9,10 +9,7 @@ namespace _Source.LocationProvider
 
         public override void InstallBindings()
         {
-            // Биндим сами настройки, чтобы UI мог их видеть
             Container.BindInstance(settings).AsSingle();
-
-            // Биндим провайдер
             Container.BindInterfacesAndSelfTo<JsonLocationProvider>().AsSingle();
         }
     }

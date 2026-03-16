@@ -4,13 +4,13 @@ using System.Collections.Generic;
 namespace _Source.LocationProvider
 {
     [Serializable]
-    public class LocationData // Сама локация
+    public class LocationData
     {
-        public string Name; // Например, название локации
+        public string Name;
     }
 
     [Serializable]
-    public class LocationDatabase // Обертка для JSON
+    public class LocationDatabase
     {
         public List<LocationData> locations;
     }

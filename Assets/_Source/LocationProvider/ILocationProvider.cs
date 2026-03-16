@@ -6,6 +6,6 @@ namespace _Source.LocationProvider
     {
         string CurrentLocation { get; set; }
         LocationData GetRandomLocation();
-        void LoadPool(TextAsset jsonConfig); // Новый метод
+        void LoadPool(TextAsset jsonConfig); 
     }
 }

@@ -13,7 +13,7 @@ namespace _Source.LocationProvider
             _locationProvider = locationProvider;
         }
 
-        public void Initialize() // Метод из IInitializable
+        public void Initialize()
         {
             StartDistribution();
         }

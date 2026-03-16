@@ -7,8 +7,8 @@ namespace _Source.LocationProvider
     [Serializable]
     public class LocationPoolData
     {
-        public string PoolName; // Отображается в UI (например, "Космос")
-        public TextAsset JsonFile; // Сам файл
+        public string PoolName;
+        public TextAsset JsonFile;
     }
 
     [CreateAssetMenu(fileName = "LocationSettings", menuName = "Settings/Location Settings")]
