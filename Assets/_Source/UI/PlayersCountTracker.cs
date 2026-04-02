@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace _Source.GameOptionsMenu
+namespace _Source.UI
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class PlayersCountTracker : MonoBehaviour
@@ -9,8 +9,8 @@ namespace _Source.GameOptionsMenu
         // Создаем статическую ссылку на этот объект
         public static PlayersCountTracker Instance { get; private set; }
 
-        private TextMeshProUGUI _playerCountText; 
-        private int _count = 0;
+        private TextMeshProUGUI _playerCountText;
+        public int Count { get; private set; } = 3;
 
         private void Awake()
         {
@@ -34,18 +34,18 @@ namespace _Source.GameOptionsMenu
 
         public void AddScoreButton()
         { 
-            if (_count < 10)
+            if (Count < 10)
             {
-                _count++;
+                Count++;
                 UpdateScoreUI();
             }
         }
 
         public void MinuseScoreButton()
         {
-            if (_count > 0)
+            if (Count > 3)
             {
-                _count--;
+                Count--;
                 UpdateScoreUI(); // Перенес внутрь условия для красоты, но можно и снаружи
             }
         }
@@ -53,13 +53,13 @@ namespace _Source.GameOptionsMenu
         private void UpdateScoreUI()
         {
             if (_playerCountText != null)
-                _playerCountText.text = _count.ToString();
+                _playerCountText.text = Count.ToString();
         }
         
         // Дополнительный метод, чтобы другие скрипты могли узнать текущий счет
         public int GetCurrentCount()
         {
-            return _count;
+            return Count;
         }
     }
 }

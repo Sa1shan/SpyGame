@@ -1,3 +1,4 @@
+using _Source.UI;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +12,8 @@ namespace _Source.LocationProvider
         {
             Container.BindInstance(settings).AsSingle();
             Container.BindInterfacesAndSelfTo<JsonLocationProvider>().AsSingle();
+            Container.Bind<LocationDistribution>().AsSingle();
+            Container.Bind<PlayerRegistry>().AsSingle();
         }
     }
 }

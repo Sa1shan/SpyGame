@@ -22,7 +22,7 @@ namespace _Source.LocationProvider
         public LocationData GetRandomLocation()
         {
             if (_database == null || _database.locations.Count == 0) return null;
-            return _database.locations[UnityEngine.Random.Range(0, _database.locations.Count)];
+            return _database.locations[Random.Range(0, _database.locations.Count)];
         }
     }
 }

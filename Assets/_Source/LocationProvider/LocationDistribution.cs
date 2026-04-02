@@ -3,8 +3,7 @@ using Zenject; // Добавили
 
 namespace _Source.LocationProvider
 {
-    // Реализуем IInitializable для автозапуска
-    public class LocationDistribution : IInitializable 
+    public class LocationDistribution 
     {
         private readonly ILocationProvider _locationProvider;
         
@@ -13,15 +12,13 @@ namespace _Source.LocationProvider
             _locationProvider = locationProvider;
         }
 
-        public void Initialize()
-        {
-            StartDistribution();
-        }
-
         public void StartDistribution()
         {
             var targetLocation = _locationProvider.GetRandomLocation();
-            Debug.Log($"Starting distribution for {targetLocation.Name}");
+            if (targetLocation != null)
+            {
+                Debug.Log($"Локация распределена: {targetLocation.Name}");
+            }
         }
     }
 }
