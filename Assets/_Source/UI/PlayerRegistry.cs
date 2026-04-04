@@ -1,27 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace _Source.UI
 {
     public class PlayerRegistry
     {
-        // Список всех созданных игроков
-        private readonly List<GameObject> _players = new List<GameObject>();
-
-        // Свойство только для чтения, чтобы другие классы могли брать список
-        public IReadOnlyList<GameObject> Players => _players;
-
+        public List<GameObject> Players = new List<GameObject>();
+        // Сама переменная
+        public bool IsPlayerCardEnd { get; private set; }
+        // Событие: на него можно подписаться, чтобы что-то включить в конце
+        public event Action OnAllCardsShown;
         public void AddPlayer(GameObject player)
         {
-            _players.Add(player);
+            Players.Add(player);
+        }
+        // Метод для фиксации финиша
+        public void FinishCardShow()
+        {
+            IsPlayerCardEnd = true;
+            OnAllCardsShown?.Invoke(); // Сообщаем всем: "Мы закончили!"
         }
 
         public void Clear()
         {
-            _players.Clear();
+            Players.Clear();
+            IsPlayerCardEnd = false; // Сбрасываем при новом раунде
         }
-        
-        // Тут же можно добавить удобные методы поиска
-        public GameObject GetPlayer(int index) => _players[index];
+
+        public GameObject GetPlayer(int index) => Players[index];
     }
 }

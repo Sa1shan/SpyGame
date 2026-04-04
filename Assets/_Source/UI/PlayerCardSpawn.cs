@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -7,20 +5,20 @@ namespace _Source.UI
 {
     public class PlayerCardSpawn : MonoBehaviour
     {
-        [Inject] private PlayerRegistry _playerRegistry; // Внедряем наш реестр
+        [Inject] private PlayerRegistry _playerRegistry;
+        [Inject] private DiContainer _container; // 1. Добавляем контейнер Zenject
+
         [SerializeField] private GameObject prefab;
-        [SerializeField] private Transform transform;
-        
-        private int Count => PlayersCountTracker.Instance.Count;
-        private List<GameObject> _spawnedPlayers = new List<GameObject>();
-        
+        [SerializeField] private GameObject afterGame;
+
         public void SpawnCard()
         {
-            _playerRegistry.Clear(); // Очищаем реестр перед новым созданием
-
-            for (int i = 0; i < Count; i++)
+            _playerRegistry.Clear();
+            Debug.Log("кнопка Continue Нажата");
+            for (int i = 0; i < PlayersCountTracker.Instance.Count; i++)
             {
-                GameObject newPlayer = Instantiate(prefab, transform);
+                // 2. Используем _container.InstantiatePrefab вместо обычного Instantiate
+                GameObject newPlayer = _container.InstantiatePrefab(prefab, this.transform);
                 newPlayer.SetActive(i == 0);
 
                 if (newPlayer.TryGetComponent(out PlayerEnrtry entry))
@@ -28,11 +26,19 @@ namespace _Source.UI
                     entry.SetPlayerName($"Player {i + 1}");
                 }
 
-                // Записываем игрока в наш новый C# класс
                 _playerRegistry.AddPlayer(newPlayer);
             }
-            Debug.Log($"Создано и сохранено в список объектов: {_spawnedPlayers.Count}");
+        
+            Debug.Log($"Создано и сохранено: {_playerRegistry.Players.Count}");
             LocationDisplay.Instance.AssignRoles();
+        }
+
+        void Update()
+        {
+            if (_playerRegistry.IsPlayerCardEnd) 
+            {
+                afterGame.SetActive(true);
+            }
         }
     }
 }
