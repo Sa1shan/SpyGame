@@ -11,7 +11,6 @@ namespace _Source.UI
         
         [Inject] private PlayerRegistry _playerRegistry;
         private int _clickCount = 0;
-        private bool _isPlayerCardEnd = false;
 
         public void SetPlayerName(string text)
         {
@@ -26,6 +25,10 @@ namespace _Source.UI
         public void Click()
         {
             _clickCount++;
+            if (_clickCount == 1) 
+            {
+                GetComponent<PlayerBonusCardLoader>()?.LoadBonusCards();
+            }
         }
         
         public void PlayerCardActivate()
@@ -34,7 +37,10 @@ namespace _Source.UI
             {
                 int myIndex = _playerRegistry.Players.IndexOf(gameObject);
 
-                if (myIndex == -1) return;
+                if (myIndex == -1)
+                {
+                    return;
+                }
 
                 // 1. ПРОВЕРЯЕМ: Является ли текущий объект ПОСЛЕДНИМ в списке?
                 if (myIndex == _playerRegistry.Players.Count - 1)
